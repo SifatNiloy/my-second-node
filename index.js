@@ -21,6 +21,9 @@ app.get('/users/:id', (req, res) => {
     const user = users[id];
     res.send(user)
 })
+app.get('/fruits/mangoes/fazli', (req, res) => {
+    res.send('yummy yummy tok marka fazli')
+})
 app.listen(port, () => {
     console.log('listening to port', port)
 })
