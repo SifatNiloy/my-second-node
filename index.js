@@ -14,12 +14,23 @@ const users = [
     { id: 5, name: 'susmita', email: 'susmita@gmail.com', phone: '01443453400' },
 ]
 app.get('/users', (req, res) => {
-    res.send(users)
+    const search = req.query.search;
+    if (search) {
+        const searchResult = users.filter(user => user.name.toLocaleLowerCase().includes(search));
+        res.send(searchResult);
+    }
+    else {
+        res.send(users)
+    }
+
 })
 app.get('/users/:id', (req, res) => {
     const id = req.params.id;
     const user = users[id];
     res.send(user)
+})
+app.get('/fruits/', (req, res) => {
+    res.send(['mangoes', 'oranges', 'banana'])
 })
 app.get('/fruits/mangoes/fazli', (req, res) => {
     res.send('yummy yummy tok marka fazli')
